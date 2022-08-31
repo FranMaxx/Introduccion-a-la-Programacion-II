@@ -8,10 +8,6 @@ program ejercicio2;
     b) Dada una posición entera (válida) y un char, ambos ingresados por el 
     usuario, modifique el contenido del archivo en la posición ingresada con 
     el char ingresado.
-    
-    c) Dado un nuevo nombre de archivo ingresado por el usuario, crear un 
-    archivo clonado con el creado en a); es decir, crear otro que tenga 
-    exactamente el mismo contenido pero con un nombre distinto
 }
 
 type
@@ -56,24 +52,6 @@ begin
     close(arch);
 end;
 
-procedure clonar(var arch, clon: archivo);
-var aux: char;
-begin
-    reset(arch);
-    rewrite(clon);
-    
-    while not eof(arch) do begin
-        read(arch, aux);
-        write(clon, aux);
-    end;
-    
-    close(clon);
-    close(arch);
-    
-    writeln;
-    writeln('¡El archivo ha sido clonado exitosamente!');
-end;
-
 procedure mostrar(var arch: archivo);
 var e: char;
 begin
@@ -102,7 +80,6 @@ begin
     
     cargar(arch);
     modificar(arch);
-    clonar(arch, clon);
     
     mostrar(arch);
 end.
